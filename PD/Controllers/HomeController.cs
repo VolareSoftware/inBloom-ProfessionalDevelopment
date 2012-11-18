@@ -9,10 +9,14 @@ namespace SLC.Controllers
             return View();
         }
 
-        public ActionResult Resources()
+        public ActionResult Plan()
         {
             return View();
         }
 
+        public ActionResult Resources()
+        {
+            return View();
+        }
     }
 }

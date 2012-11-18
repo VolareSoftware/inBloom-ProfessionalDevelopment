@@ -99,6 +99,7 @@ h4
 h5, h6
 {
     font-size: 1em;
+    margin: 0;
 }
 
     h5 a:link, h5 a:visited, h5 a:active
@@ -370,13 +371,13 @@ aside
     width: 25%;
 }
 
-ul
+#plan ul
 {
     list-style: none;
     padding-left: 15px;
 }
 
-li
+#plan li
 {
     background: url("../Images/bullet.png") no-repeat 0 50%;
     padding: 2px 0 2px 20px;

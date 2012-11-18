@@ -8,46 +8,57 @@
                 <h1>Welcome to the Data-Driven Professional Development app!</h1>
             </hgroup>
             <p>
-                This app enables you to see your personalized learning plan.  We'll show you areas
-                of focus for professional development 
-                and match you to the exact resources you need based on the 1) achievement of your
-                students, 2) your own self-assessments, and 
-                3) guidance from your mentor / instructional coach.
+                This app enables to personalize your learning plan.
             </p>
         </div>
     </section>
 }
-<h3>We suggest the following:</h3>
-<div class="expand-collapse expanded">
-    <h5>Common Core / Standards</h5>
-</div>
-<div>
-    <ul>
-        <li class="expand-collapse expanded">Reading and writing</li>
-        <ul>
-            <li>1.2.3.a - <a href="/Home/Resources">Main idea and blah blah blah</a></li>
-            <li>1.2.3.b - <a href="/Home/Resources">Details and blah blah blah</a></li>
-        </ul>
-        <li class="expand-collapse expanded">Mathematics</li>
-        <ul>
-            <li>4.2.3.a - <a href="/Home/Resources">Fractions and blah blah blah</a></li>
-            <li>4.2.3.b - <a href="/Home/Resources">Decimals and blah blah blah</a></li>
-        </ul>
-    </ul>
-</div>
-<div class="expand-collapse expanded">
-    <h5>Self-assessment</h5>
-</div>
-<div>
-    <ul>
-        <li><a href="#">Take a self assessment</a></li>
-    </ul>
-</div>
-<div class="expand-collapse expanded">
-    <h5>Mentoring / Instructional Coach</h5>
-</div>
-<div>
-    <ul>
-        <li><a href="#">Schedule session with your instructional coach</a></li>
-    </ul>
-</div>
+<h3>We'll show you areas of focus for professional development and match you to the
+    exact resources you need based on the:</h3>
+
+<ol class="round">
+    <li class="one">
+        <h5>Common Core / Standards</h5>
+        Find areas of focus based on the performance of all your students.
+    </li>
+
+    <li class="two">
+        <h5>Self-assessment</h5>
+        Take a self-assessment survey to identify areas you'd like to work on.
+    </li>
+
+    <li class="three">
+        <h5>Mentoring / Instructional Coach</h5>
+        Get help on becoming a stronger teacher with mentoring from your instructional coach.
+    </li>
+</ol>
+
+<section id="loginForm">
+<h2>Welcome back!</h2>    
+    <fieldset>
+        <legend>Log in</legend>
+        <ol>
+            <li>
+                <label for="UserName">User name</label>
+                <input type="text" id="UserName"/>
+            </li>
+            <li>
+                <label for="Pasword">User name</label>
+                <input type="password" id="Password"/>
+            </li>
+            <li>
+                <input type="checkbox" id="RememberMe"/>
+                <label for ="RememberMe" class="checkbox">Remeber me</label>
+            </li>
+        </ol>
+        <input type="button" value="Log in" onclick="location.href='/Home/Plan'" />
+    </fieldset>
+</section>
+
+<section class="social" id="socialLoginForm">
+    <h2>First time here?</h2>
+    <fieldset>
+        <legend>Log in</legend>
+        <input type="button" value="Register"/>
+    </fieldset>
+</section>
