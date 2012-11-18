@@ -56,53 +56,22 @@ namespace SLC.Controllers
 
                         // Redirect to app main page.
                         //Response.Redirect("main.aspx");
-                        RedirectToAction("Main");
+                        Response.Redirect("/Home/Main");
+                        //RedirectToAction("Main", "Home");
                     }
                 }
             }
             else
             {
                 // We have an access token in session, let's redirect to app main page.
-                //Response.Redirect("main.aspx");
-                RedirectToAction("Main");
+                Response.Redirect("/Home/Main");
+                //RedirectToAction("Main", "Home");
             }
         }
 
         public ActionResult Main()
         {
             return View();
-        }
-
-        public void SLcDataDemo()
-        {
-            // TODO: This is a demo to see if we can get REAL SLC data coming though!
-            // Do we have a valid access token in session?  If yes, let's make an API call.
-            if (Session["access_token"] != null)
-            {
-                var apiEndPoint = "https://api.sandbox.slcedu.org/api/rest/v1/students";
-
-                var restClient = new WebClient();
-
-                var bearerToken = string.Format("bearer {0}", Session["access_token"]);
-
-                restClient.Headers.Add("Authorization", bearerToken);
-                restClient.Headers.Add("Content-Type", "application/vnd.slc+json");
-                restClient.Headers.Add("Accept", "application/vnd.slc+json");
-
-                var result = restClient.DownloadString(apiEndPoint);
-
-                var response = JArray.Parse(result);
-
-                for (var index = 0; index < response.Count; index++)
-                {
-                    var token = response[index];
-                    Response.Write(token["name"]["firstName"] + " " + token["name"]["lastSurname"]);
-                    Response.Write("<br/>");
-                }
-
-                Response.Write("<br/><br/><h1>Full JSON Response</h1><br/><br/>");
-                Response.Write(result);
-            }
         }
 
         public ActionResult Plan()
@@ -113,6 +82,32 @@ namespace SLC.Controllers
         public ActionResult Resources()
         {
             return View();
+        }
+
+        // This is a demo to see if we can get REAL SLC data coming though!
+        // To test, go to /Home/MyProfile and you will see the JSON in the browser
+        public JsonResult MyProfile()
+        {
+            var result = "";
+
+            // Do we have a valid access token in session?  If yes, let's make an API call.
+            if (Session["access_token"] != null)
+            {
+                var lindaKimTeacherId = "2012rr-08e09b06-3123-11e2-ad37-02786541ab34";
+                var apiEndPoint = string.Format("https://api.sandbox.slcedu.org/api/rest/v1/teachers/{0}", lindaKimTeacherId);
+
+                var restClient = new WebClient();
+
+                var bearerToken = string.Format("bearer {0}", Session["access_token"]);
+
+                restClient.Headers.Add("Authorization", bearerToken);
+                restClient.Headers.Add("Content-Type", "application/vnd.slc+json");
+                restClient.Headers.Add("Accept", "application/vnd.slc+json");
+
+                result = restClient.DownloadString(apiEndPoint);
+
+            }
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
     }
 }
