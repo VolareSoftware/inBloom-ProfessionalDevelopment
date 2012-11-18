@@ -6,6 +6,7 @@
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/themes/base/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
@@ -17,16 +18,16 @@
             </div>
             <div class="float-right">
                 <section id="login">
-                    <div style="float:left;">
+                    <div style="float: left;">
                         <div>
-                            Hello, Mr. T
+                            Hello, Linda Kim
                         </div>
                         <div style="padding-top: 5px;">
                             <a href="#">Log off</a>
                         </div>
                     </div>
-                    <div style="float:right; padding-left: 5px;">
-                        <a href="/Home/MyProfile">
+                    <div style="float: right; padding-left: 5px;">
+                        <a id="myProfile" style="cursor: pointer" href="/Home/MyProfile">
                             <img src="~/Images/mr-t-is-here.png" width="45" />
                         </a>
                     </div>
@@ -48,8 +49,42 @@
         </div>
     </footer>
 
+    @*<div id="profileDialog" style="display: none;">
+        <div>
+            <b>Name</b>
+        </div>
+        <div>
+            <span data-bind="text: title" />&nbsp;<span data-bind="text: firstName" />&nbsp;<span data-bind="text: lastName" />
+        </div>
+    </div>*@
+
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @*<script src="~/Scripts/knockout-2.1.0.js"></script>*@
     @RenderSection("scripts", required: false)
     <script src="~/Scripts/ExpandCollapse.js"></script>
+    @*<script>
+        $("#myProfile").click(function () {
+            $.getJSON("/home/myProfile", function(data) {
+                var parsed = JSON.parse(data);
+                ko.applyBindings(new ViewModel(parsed));
+
+                $("#profileDialog").dialog();
+            });
+            
+            function ViewModel(json) {
+                //this.title = ko.observable();
+                //this.firstName = ko.observable();
+                //this.lastName = ko.observable();
+
+                // Update view model properties
+                this.title = json.name.personalTitlePrefix;
+                this.firstName = json.name.firstName;
+                this.lastName = json.name.lastSurname;
+
+
+            }
+        });
+    </script>*@
 </body>
 </html>
